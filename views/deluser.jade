@@ -1,0 +1,7 @@
+extends layout
+
+block content
+	h1= title
+	form#formAddUser(name="deluser",method="post",action="/deluser")
+		input#inputUserName(type="text", placeholder="username", name="username")
+		button#btnSubmit(type="submit") submit
