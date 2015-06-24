@@ -63,8 +63,13 @@ router.post('/deluser', function(req, res){
 	var username = req.body.username;
 	
 	var collection = db.get("usercollection");
-	collection.remove({"username": username});
-	res.redirect("userlist");
+	collection.remove({"username": username}, function(err,doc){
+		if(err){
+			res.send("There was a problem deleting the information to the database.");
+		}else{
+			res.redirect("userlist");
+		}
+	});
 });
 
 module.exports = router;
